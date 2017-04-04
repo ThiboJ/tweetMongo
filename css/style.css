@@ -1,7 +1,41 @@
 
 body{
     background-color: #EFF0F0;
+    font-family: Arial;
 }
     #container-candidats{
-        width:100%
+        width:100%;
+        overflow:hidden;
     }
+        #container-candidats .candidat{
+            width:9%;
+            float: left;
+            margin-top:40px;
+        }
+            #container-candidats .candidat .inner{
+                width:95%;
+                margin:auto;
+                background-color:white;
+                text-align: center;
+                padding-bottom: 30px;
+            }
+                #container-candidats .candidat .inner .image{
+                    border-radius: 360px;
+                    border:5px solid white;
+                    height:50px;
+                    margin-top:-30px;
+                    margin-bottom: 15px;
+                }
+                #container-candidats .candidat .inner .name{
+                    height:50px;
+                }
+                #container-candidats .candidat .inner .icon-twitter{
+                    height:20px;
+                }
+                #container-candidats .candidat .inner .twitter{
+                    margin-top:10px;
+                    display: block;
+                    font-size: 10px;
+                    color: #598dca;
+                    text-decoration: none;
+                }

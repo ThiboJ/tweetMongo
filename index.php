@@ -1,3 +1,6 @@
+<?php
+require_once ("config.php");
+?>
 <!doctype html>
 <html lang="fr">
 <head>
@@ -7,10 +10,34 @@
     <script src="script.js"></script>
 </head>
 <body>
-<div class="container-candidats">
 
+<div id="container-candidats">
+    <?php foreach ($candidats as $candidat):?>
+        <?php $account = $candidat[1]; ?>
+        <?php $name = $candidat[0]; ?>
+        <div class="candidat">
+            <div class="inner">
+                <img class="image" src="img/candidats/<?php echo $account ?>.jpg" alt="">
+                <div class="name">
+                    <?php echo $name ?>
+                </div>
+                <img src="img/icones/twitter.png" class="icon-twitter" alt="">
+                <a class="twitter" target="_blank" href="http://twitter.com/<?php echo $account ?>">
+                    @<?php echo $account ?>
+                </a>
+            </div>
+        </div>
+    <?php endforeach;?>
 </div>
+
+</body>
+</html>
+
+
+
+
 <?php
+
 
 echo "Affichage des valeurs";
 
@@ -22,5 +49,3 @@ echo "Affichage des valeurs";
 //BONUS : Tweet de TRUMP
 
 ?>
-</body>
-</html>
