@@ -1,7 +1,7 @@
 
 body{
     background-color: #EFF0F0;
-    font-family: Arial;
+    font-family: monospace;
 }
     #container-candidats{
         width:100%;
@@ -30,7 +30,7 @@ body{
                     height:50px;
                 }
                 #container-candidats .candidat .inner .icon-twitter{
-                    height:20px;
+                    height:15px;
                 }
                 #container-candidats .candidat .inner .twitter{
                     margin-top:10px;
@@ -38,4 +38,30 @@ body{
                     font-size: 10px;
                     color: #598dca;
                     text-decoration: none;
+                    margin-top:-3px;
                 }
+                #container-candidats .candidat .inner .number{
+                    font-size:40px;
+                    padding-top:15px;
+                    border-top:1px solid rgb(230,230,230);
+                    width:90%;
+                    margin:15px auto 0;
+                }
+                #container-candidats .candidat .inner .label{
+                    font-size: 11px;
+                }
+    #pie-charts{
+        overflow: hidden;
+        height:500px;
+        width:90%;
+        margin: 40px auto 0;
+    }
+        #pie-charts .pies{
+            width:30%;
+            height: 300px;
+            float:left;
+            margin-left:5%;
+        }
+            #pie-charts .pies:first-child{
+                margin-left:0%;
+            }
