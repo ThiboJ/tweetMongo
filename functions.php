@@ -26,10 +26,25 @@ foreach ($candidats as $candidat)
         'count' => 100,
     );
 
-    $results = search($query);
+    $lastId = '';
+    for ($i = 0; $i < 6; $i++)
+    {
+        if ($i > 0) {
+          $query['max_id'] = $lastId;
+        }
 
-    foreach ($results->statuses as $result) {
-        echo $result->user->screen_name . ": " . $result->text . "\n";
+        $results = search($query);
+        if (count($results) == 0) {
+            break;
+        }
+        $cptResults = 0;
+        foreach ($results as $result)
+        {
+            $cptResults++;
+            if ($cptResults == 99) {
+                $lastId = $result['id_str'];
+            }
+        }
     }
 }
 
