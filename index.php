@@ -1,3 +1,15 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Titre de la page</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="container-candidats">
+
+</div>
 <?php
 
 echo "Affichage des valeurs";
@@ -10,3 +22,5 @@ echo "Affichage des valeurs";
 //BONUS : Tweet de TRUMP
 
 ?>
+</body>
+</html>
