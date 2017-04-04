@@ -20,8 +20,6 @@ array(
     array("François Fillon","FrancoisFillon",array("FrançoisFillon","fillon"))
 );
 
-
-
 // Création des fonction de récupération des valeurs par account et par hashtag
 
 define('CONSUMER_KEY', TWITTER_KEY);
