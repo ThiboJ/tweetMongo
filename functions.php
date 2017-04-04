@@ -10,8 +10,8 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
 define('CONSUMER_KEY', TWITTER_KEY);
 define('CONSUMER_SECRET', TWITTER_SECRET);
-define('ACCESS_TOKEN', 'your_access_token');
-define('ACCESS_TOKEN_SECRET', 'your_access_token_secret');
+define('ACCESS_TOKEN', TWITTER_ACCESS_TOKEN);
+define('ACCESS_TOKEN_SECRET', TWITTER_TOKEN_SECRET);
 
 function search(array $query)
 {
@@ -19,14 +19,18 @@ function search(array $query)
     return $toa->get('search/tweets', $query);
 }
 
-$query = array(
-    "q" => "",
-);
+foreach ($candidats as $candidat)
+{
+    $query = array(
+        'q' => 'from:'.$candidat[1],
+        'count' => 100,
+    );
 
-$results = search($query);
+    $results = search($query);
 
-foreach ($results->statuses as $result) {
-    echo $result->user->screen_name . ": " . $result->text . "\n";
+    foreach ($results->statuses as $result) {
+        echo $result->user->screen_name . ": " . $result->text . "\n";
+    }
 }
 
 ?>
