@@ -19,7 +19,23 @@ require_once ("config.php");
     </style>
 </head>
 <body>
-
+<div id="header">
+    <div class="parts-large">
+        Big Data
+        <br/>
+        MongoDB
+    </div>
+    <div class="parts-small">
+        <img src="img/icones/twitter.png" alt="">
+    </div>
+    <div class="parts-large">
+        GOURIER Sylvain
+        <br/>
+        HIL Benjamin
+        <br/>
+        JULLION Thibault
+    </div>
+</div>
 <div id="container-candidats">
     <?php foreach ($candidats as $candidat):?>
         <?php $account = $candidat[1]; ?>
@@ -55,10 +71,18 @@ require_once ("config.php");
 <div id="pie-charts">
     <div class="pies" id="pie-tweet"></div>
     <div class="pies" id="pie-followers"></div>
-    <div class="pies"></div>
 </div>
 <?php require_once ("parts/pies/tweets.php"); ?>
 <?php require_once ("parts/pies/followers.php"); ?>
+
+
+<!--            BARS            -->
+<div id="bars-hashtag">
+</div>
+<?php require_once ("parts/bars/hashtag.php"); ?>
+
+
+
 
 </body>
 </html>

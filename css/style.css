@@ -3,6 +3,30 @@ body{
     background-color: #EFF0F0;
     font-family: monospace;
 }
+
+    #header{
+        overflow: hidden;
+        height:150px;
+        width:90%;
+        margin: 10px auto 20px;
+        text-align: center;
+        border-bottom: 1px solid silver;
+    }
+        #header .parts-large{
+            float: left;
+            width:40%;
+            padding-top: 30px;
+        }
+        #header .parts-small{
+            float: left;
+            width:20%;
+            padding-top:10px;
+        }
+            #header .parts-small img{
+                height:70px;
+            }
+
+
     #container-candidats{
         width:100%;
         overflow:hidden;
@@ -52,16 +76,20 @@ body{
                 }
     #pie-charts{
         overflow: hidden;
-        height:500px;
+        padding-bottom: 20px;
         width:90%;
         margin: 40px auto 0;
     }
         #pie-charts .pies{
-            width:30%;
+            width:47%;
             height: 300px;
             float:left;
-            margin-left:5%;
         }
-            #pie-charts .pies:first-child{
-                margin-left:0%;
+            #pie-charts .pies:last-child{
+                margin-left:6%;
             }
+    #bars-hashtag{
+        width:90%;
+        margin: 0px auto 0px;
+        height:400px;
+    }

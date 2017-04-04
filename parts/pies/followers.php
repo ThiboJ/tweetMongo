@@ -1,7 +1,3 @@
-
-
-
-<div id="container"></div>
 <script type="text/javascript">
     anychart.onDocumentReady(function () {
         // create pie chart with passed data
