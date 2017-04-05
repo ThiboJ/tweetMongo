@@ -1,0 +1,9 @@
+Mots les plus utilisés
+db.tweetCandidats.aggregate([{$project: {words:{$split: ["$content"," "]}}},{$unwind: {path: "$words"}},{$group:{_id:"$words",count: {$sum:1}}},{$sort: {count:-1}}])
+
+Retweet par candidat
+db.tweetCandidats.aggregate([{$match:{'user': 'n_arthaud'}},{$group:{_id:"$user",retweet:{$sum:"$retweet"}}}])
+
+Mot par candidat
+
+db.tweetCandidats.find({$and:[{"user":'JLMelenchon'},{"content":{$regex:'nous', $options : 'i'}}]}).count()
