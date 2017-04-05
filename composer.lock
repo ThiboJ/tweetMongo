@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "41e61e982193ce84f291e44b693578a7",
     "content-hash": "b4ffc1cad8efb9fc930c057e0ba0c950",
     "packages": [
         {
@@ -58,7 +59,7 @@
                 "social",
                 "twitter"
             ],
-            "time": "2016-12-12T17:42:13+00:00"
+            "time": "2016-12-12 17:42:13"
         },
         {
             "name": "mongodb/mongodb",
@@ -116,7 +117,7 @@
                 "mongodb",
                 "persistence"
             ],
-            "time": "2017-02-16T18:40:32+00:00"
+            "time": "2017-02-16 18:40:32"
         }
     ],
     "packages-dev": [],

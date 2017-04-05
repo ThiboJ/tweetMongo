@@ -1,5 +1,6 @@
 <?php
 require_once ("config.php");
+require_once ("functions.php");
 ?>
 <!doctype html>
 <html lang="fr">
@@ -40,6 +41,7 @@ require_once ("config.php");
     <?php foreach ($candidats as $candidat):?>
         <?php $account = $candidat[1]; ?>
         <?php $name = $candidat[0]; ?>
+        <?php $infos = getCandidatInfo($account); ?>
         <div class="candidat">
             <div class="inner">
                 <img class="image" src="img/candidats/<?php echo $account ?>.jpg" alt="">
@@ -51,13 +53,13 @@ require_once ("config.php");
                     @<?php echo $account ?>
                 </a>
                 <div class="number">
-                    345
+                    <?php echo $infos['followers']; ?>
                 </div>
                 <div class="label">
                     Followers
                 </div>
                 <div class="number">
-                    3522
+                    <?php echo $infos['tweets_count']; ?>
                 </div>
                 <div class="label">
                     Tweets
