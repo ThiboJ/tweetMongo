@@ -5,5 +5,7 @@ Retweet par candidat
 db.tweetCandidats.aggregate([{$match:{'user': 'n_arthaud'}},{$group:{_id:"$user",retweet:{$sum:"$retweet"}}}])
 
 Mot par candidat
-
 db.tweetCandidats.find({$and:[{"user":'JLMelenchon'},{"content":{$regex:'nous', $options : 'i'}}]}).count()
+
+Tweet par jour
+db.tweetCandidats.find({$and:[{"user":'JLMelenchon'},{"date":{$regex:'Mon', $options : 'i'}}]}).count()
