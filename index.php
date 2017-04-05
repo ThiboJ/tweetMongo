@@ -90,8 +90,10 @@ require_once ("functions.php");
 </div>
 <?php require_once ("parts/bars/hashtag.php"); ?>
 
-
-
+<!--            BARS            -->
+<div id="bars-nousje">
+</div>
+<?php require_once ("parts/bars/nousje.php"); ?>
 
 </body>
 </html>
