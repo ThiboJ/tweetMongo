@@ -50,8 +50,12 @@ body{
                     margin-top:-30px;
                     margin-bottom: 15px;
                 }
+                #container-candidats .candidat .inner .since{
+                    font-size: 9px;
+                    margin-bottom: 10px;
+                }
                 #container-candidats .candidat .inner .name{
-                    height:50px;
+                    height:40px;
                 }
                 #container-candidats .candidat .inner .icon-twitter{
                     height:15px;
@@ -81,19 +85,38 @@ body{
         margin: 40px auto 0;
     }
         #pie-charts .pies{
-            width:47%;
+            width:30%;
             height: 300px;
             float:left;
+            margin-left: 5%;
         }
-            #pie-charts .pies:last-child{
-                margin-left:6%;
+            #pie-charts .pies:first-child{
+                margin-left:0%;
             }
-    #bars-hashtag{
+    #bars-nousje{
         width:90%;
-        margin: 0px auto 0px;
+        margin: 40px auto 0px;
         height:400px;
     }
-    #bars-nousje{
+
+    #gauges-charts{
+        overflow: hidden;
+        padding-bottom: 20px;
+        width:90%;
+        margin: 40px auto 0;
+    }
+        #gauges-charts .gauge {
+            width: 49%;
+            height: 500px;
+            float: left;
+            margin-left: 2%;
+        }
+            #gauges-charts .gauge:first-child{
+                margin-left: 0%;
+            }
+
+
+    #evolution-days{
         width:90%;
         margin: 40px auto 0px;
         height:400px;

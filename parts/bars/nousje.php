@@ -1,19 +1,7 @@
 <script type="text/javascript">
     anychart.onDocumentReady(function () {
-        // create data set on our data
-        var dataSet = anychart.data.set([
-            ["Nathalie Arthaud",15,85],
-            ["Jean Luc Melenchon",15,85],
-            ["Benoît Hamon",15,85],
-            ["Nicolas Dupont Aignan",15,85],
-            ["Jean Lassalle",15,85],
-            ["Emmanuel Macron",15,85],
-            ["Marine Le Pen",15,85],
-            ["Philippe Poutou",15,85],
-            ["Jacques Cheminade",15,85],
-            ["François Asselineau",15,85],
-            ["François Fillon",15,85]
-        ]);
+        // create data set
+        var dataSet = anychart.data.set(getData());
 
         // map data for the first series, take x from the zero column and value from the first column of data set
         var seriesData_1 = dataSet.mapAs({x: [0], value: [1]});
@@ -21,63 +9,72 @@
         // map data for the second series, take x from the zero column and value from the second column of data set
         var seriesData_2 = dataSet.mapAs({x: [0], value: [2]});
 
-        // map data for the third series, take x from the zero column and value from the third column of data set
-        var seriesData_3 = dataSet.mapAs({x: [0], value: [3]});
-
-        // map data for the fourth series, take x from the zero column and value from the fourth column of data set
-        var seriesData_4 = dataSet.mapAs({x: [0], value: [4]});
-
-        // create column chart
-        chart = anychart.column();
+        // create bar chart
+        chart = anychart.bar();
 
         // turn on chart animation
         chart.animation(true);
 
-        // set chart title text settings
-        chart.title('Comparaison du terme "Je" et "Nous" par candidat');
+        // set padding
+        chart.padding([10, 20, 5, 20]);
 
-        chart.yAxis().labels().textFormatter("{%Value}");
+        // force chart to stack values by Y scale.
+        chart.yScale().stackMode('value');
 
-        // set titles for Y-axis
-        chart.yAxis().title('Nombre');
+        // format y axis labels so they are always positive
+        chart.yAxis().labels().textFormatter(function () {
+            return Math.abs(this.value).toLocaleString();
+        });
+
+        // set title for Y-axis
+        chart.yAxis().title('');
+
+        // allow labels to overlap
+        chart.xAxis().overlapMode("allowOverlap");
+
+        // turn on extra axis for the symmetry
+        chart.xAxis(1).enabled(true);
+        chart.xAxis(1).orientation('right');
+        chart.xAxis(1).overlapMode("allowOverlap");
+
+
+        // set chart title text
+        chart.title('Utilisation des termes "Je" et "Nous" par candidat');
 
         // helper function to setup label settings for all series
-        var setupSeriesLabels = function (series, name) {
-            var seriesLabels = series.labels();
-            series.hoverLabels().enabled(false);
-            seriesLabels.enabled(true);
-            seriesLabels.position('top');
-            seriesLabels.textFormatter(function () {
-                return this.value.toLocaleString();
-            });
+        var setupSeries = function (series, name) {
             series.name(name);
-            seriesLabels.anchor('bottom');
             series.tooltip().titleFormatter(function () {
                 return this.x;
             });
+            series.tooltip().title(false);
+            series.tooltip().separator(false);
+            series.tooltip().useHtml(true).fontSize(12);
             series.tooltip().textFormatter(function () {
-                return this.seriesName + ': ' + parseInt(this.value).toLocaleString();
+                return Math.abs(this.value).toLocaleString();
             });
-            series.tooltip().position('top').anchor('bottom').offsetX(0).offsetY(5);
         };
+
+        chart.interactivity().hoverMode('byX');
+        chart.tooltip().displayMode('separated');
+        chart.tooltip().positionMode('point');
 
         // temp variable to store series instance
         var series;
 
         // create first series with mapped data
-        series = chart.column(seriesData_1);
-        setupSeriesLabels(series, '"Je"');
+        series = chart.bar(seriesData_1);
+        series.tooltip().position('right').anchor('left').offsetX(5).offsetY(0);
+        series.color("#0D3A9C");
+        setupSeries(series, '"Je"');
 
         // create second series with mapped data
-        series = chart.column(seriesData_2);
-        setupSeriesLabels(series, '"Nous"');
+        series = chart.bar(seriesData_2);
+        series.tooltip().position('left').anchor('right').offsetX(5).offsetY(0);
+        setupSeries(series, '"Nous"');
 
-        // turn on legend and tune it
-        chart.legend().enabled(true).fontSize(13).padding([0, 0, 20, 0]);
-
-        // interactivity settings and tooltip position
-        chart.interactivity().hoverMode('single');
-        chart.tooltip().positionMode('point');
+        // turn on legend
+        chart.legend().enabled(true).inverted(true).fontSize(13).padding([0, 0, 20, 0]);
 
         // set container id for the chart
         chart.container('bars-nousje');
@@ -85,5 +82,14 @@
         // initiate chart drawing
         chart.draw();
     });
+
+function getData() {
+    return [
+        ["Base 700",700,-700],
+        <?php foreach ($candidats as $candidat):?>
+        <?php echo '["'.$candidat[0].'",'. getNbWordUsed($candidat[1],'je').',-'.getNbWordUsed($candidat[1],'nous'). '],' ?>
+        <?php endforeach; ?>
+    ]
+}
 
 </script>

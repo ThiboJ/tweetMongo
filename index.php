@@ -48,6 +48,12 @@ require_once ("functions.php");
                 <div class="name">
                     <?php echo $name ?>
                 </div>
+                <div class="since">
+                    Depuis
+                    <br/>
+                    <?php $dateCreation = new DateTime($infos['inscription_date']); ?>
+                    <?php echo $dateCreation->format('d/m/Y'); ?>
+                </div>
                 <img src="img/icones/twitter.png" class="icon-twitter" alt="">
                 <a class="twitter" target="_blank" href="http://twitter.com/<?php echo $account ?>">
                     @<?php echo $account ?>
@@ -64,13 +70,6 @@ require_once ("functions.php");
                 <div class="label">
                     Tweets
                 </div>
-                <div class="number">
-                    <?php $dateCreation = new DateTime($infos['inscription_date']); ?>
-                    <?php echo $dateCreation->format('d/m/Y'); ?>
-                </div>
-                <div class="label">
-                    Inscription
-                </div>
             </div>
         </div>
     <?php endforeach;?>
@@ -80,20 +79,29 @@ require_once ("functions.php");
 <div id="pie-charts">
     <div class="pies" id="pie-tweet"></div>
     <div class="pies" id="pie-followers"></div>
+    <div class="pies" id="pie-retweet"></div>
 </div>
 <?php require_once ("parts/pies/tweets.php"); ?>
 <?php require_once ("parts/pies/followers.php"); ?>
-
-
-<!--            BARS            -->
-<div id="bars-hashtag">
-</div>
-<?php require_once ("parts/bars/hashtag.php"); ?>
+<?php require_once ("parts/pies/retweet.php"); ?>
 
 <!--            BARS            -->
 <div id="bars-nousje">
 </div>
 <?php require_once ("parts/bars/nousje.php"); ?>
+
+<!--            GAUGES            -->
+<div id="gauges-charts">
+    <div class="gauge" id="gauge-difference"></div>
+    <div class="gauge" id="gauge-additionne"></div>
+</div>
+<?php require_once("parts/gauge/difference.php"); ?>
+<?php require_once("parts/gauge/additionne.php"); ?>
+
+<!--            EVOLUTION            -->
+<div id="evolution-days">
+</div>
+<?php require_once ("parts/evolution/days.php"); ?>
 
 </body>
 </html>
