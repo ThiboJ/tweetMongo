@@ -5,7 +5,7 @@ require_once ("config.php");
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <title>Titre de la page</title>
+    <title>Les elections sur Twitter</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="script.js"></script>  <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.anychart.com/css/7.13.0/anychart-ui.min.css" />
@@ -87,19 +87,6 @@ require_once ("config.php");
 </body>
 </html>
 
+<?php $m = new Mongo('localhost'); ?>
 
 
-
-<?php
-
-
-echo "Affichage des valeurs";
-
-// Affichage du nombre de tweet par candidat depuis un mois
-// Affichage du nombre de tweet par candidat avec les hashtags
-// Affichage nombre de tweet pour "presidentielle2017"
-// Difference des folowwers
-
-//BONUS : Tweet de TRUMP
-
-?>
