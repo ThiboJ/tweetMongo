@@ -89,6 +89,3 @@ require_once ("functions.php");
 </body>
 </html>
 
-<?php $m = new Mongo('localhost'); ?>
-
-

@@ -2,17 +2,9 @@
     anychart.onDocumentReady(function () {
         // create pie chart with passed data
         chart = anychart.pie([
-            ["Nathalie Arthaud",532],
-            ["Jean Luc Melenchon",423],
-            ["Benoît Hamon",21034],
-            ["Nicolas Dupont Aignan",1621],
-            ["Jean Lassalle",14613],
-            ["Emmanuel Macron",9612],
-            ["Marine Le Pen",15],
-            ["Philippe Poutou",4613],
-            ["Jacques Cheminade",94613],
-            ["François Asselineau",623],
-            ["François Fillon",96184]
+            <?php foreach ($candidats as $candidat):?>
+                <?php echo '["'.$candidat[0].'",'. getCandidatNbTweet($candidat[1]). '],' ?>
+            <?php endforeach; ?>
         ]);
 
         // set container id for the chart
@@ -26,7 +18,6 @@
 
         // set legend title text settings
         chart.legend(true);
-        chart.legend().title('Retail channels');
         chart.legend().title().padding([0, 0, 10, 0]);
 
         // set legend position and items layout

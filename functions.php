@@ -9,3 +9,17 @@ function getCandidatInfo($screenName)
 
     return $cursor->toArray()[0];
 }
+
+function getCandidatNbTweet($screenName)
+{
+    $infos = getCandidatInfo($screenName);
+
+    return $infos['tweets_count'];
+}
+
+function getCandidatNbFollowers($screenName)
+{
+    $infos = getCandidatInfo($screenName);
+
+    return $infos['followers'];
+}
