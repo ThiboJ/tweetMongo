@@ -64,6 +64,13 @@ require_once ("functions.php");
                 <div class="label">
                     Tweets
                 </div>
+                <div class="number">
+                    <?php $dateCreation = new DateTime($infos['inscription_date']); ?>
+                    <?php echo $dateCreation->format('d/m/Y'); ?>
+                </div>
+                <div class="label">
+                    Inscription
+                </div>
             </div>
         </div>
     <?php endforeach;?>

@@ -43,10 +43,11 @@ foreach ($candidats as $candidat)
         $cptResults = 0;
         foreach ($results->statuses as $result)
         {
+            $dateCreation = new DateTime($result->created_at);
             $candidatT = array(
                 'tweetId' => $result->id_str,
                 'user'=>$result->user->screen_name,
-                'date'=>$result->created_at,
+                'date'=> $dateCreation->format('Y-m-d\TH:i:s.000\Z'),
                 'content'=>$result->text,
                 'retweet'=>$result->retweet_count,
             );
