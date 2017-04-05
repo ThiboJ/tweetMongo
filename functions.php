@@ -19,6 +19,9 @@ function search(array $query)
     return $toa->get('search/tweets', $query);
 }
 
+$client = new MongoDB\Client("mongodb://localhost:27017");
+$tweetCandidats = $client->twitterKing->tweetCandidats;
+$allResult = array();
 foreach ($candidats as $candidat)
 {
     $query = array(
@@ -27,7 +30,7 @@ foreach ($candidats as $candidat)
     );
 
     $lastId = '';
-    for ($i = 0; $i < 6; $i++)
+    for ($i = 0; $i < 15; $i++)
     {
         if ($i > 0) {
           $query['max_id'] = $lastId;
@@ -38,14 +41,24 @@ foreach ($candidats as $candidat)
             break;
         }
         $cptResults = 0;
-        foreach ($results as $result)
+        foreach ($results->statuses as $result)
         {
+            $candidatT = array(
+                'tweetId' => $result->id_str,
+                'user'=>$result->user->screen_name,
+                'date'=>$result->created_at,
+                'content'=>$result->text,
+                'retweet'=>$result->retweet_count,
+            );
+            $allResult[] = $candidatT;
+
             $cptResults++;
             if ($cptResults == 99) {
-                $lastId = $result['id_str'];
+                $lastId = $result->id_str;
             }
         }
     }
 }
+$tweetCandidats->insertMany($allResult);
 
 ?>
