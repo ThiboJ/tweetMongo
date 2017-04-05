@@ -32,5 +32,3 @@ foreach ($candidats as $candidat)
 
     $candidatsSchema->insertOne($candidatF);
 }
-
-echo 'coucou';
